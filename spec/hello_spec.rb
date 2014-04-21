@@ -1,5 +1,7 @@
+require File.dirname(__FILE__) + '/../lib/hello'
+
 describe "hello" do
  it "is fine" do
-  expect(true).to be(true)
+   expect(Hello.new.hi).to eql("hello")
  end
 end
