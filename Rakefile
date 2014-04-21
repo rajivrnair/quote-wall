@@ -1,5 +1,5 @@
-task :hello do
- puts "hello world"
+task :spec do
+ sh('rspec')
 end
 
-task :default => :hello
+task :default => :spec
