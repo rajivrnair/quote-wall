@@ -1,6 +1,6 @@
 require 'webmachine'
 require 'json'
-require_relative '../database/quotes_db'
+require_relative '../models/quote'
 
 class QuotesResource < Webmachine::Resource
 	def initialize
