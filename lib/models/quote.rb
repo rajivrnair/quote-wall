@@ -1,11 +1,43 @@
 class Quote
-	@@db = {:anon => 'Persistence Pays'}
+	attr_accessor :id, :author, :quote, :date
 
-	def get_quotes
-		@@db
+	@@db = {}
+
+	class << self
+		def all
+			@@db.values
+		end
+
+		def find(id)
+			@@db[id]
+		end
+
+		def next_id
+			@@db.keys.max.to_i + 1
+		end
+
+		def annihilate
+			@@db.clear
+		end
 	end
 
-	def add_quote(author, quote)
-		@@db[author] = quote
+	def to_json(options = {})
+		%{{"author":"#@author", "quote":"#@quote", "date":"#@date", "id":#@id}}
 	end
+
+	def initialize(attrs = {})
+		attrs.each do |attr, value|
+			send("#{attr}=", value) if respond_to?(attr)
+		end
+	end
+
+	def save(id = nil)
+		self.id = id || self.class.next_id
+		@@db[self.id] = self
+	end
+
+	def destroy
+		@@db.delete(id)
+	end	
+
 end
