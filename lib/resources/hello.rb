@@ -1,7 +1,7 @@
 require 'webmachine'
 class HelloResource < Webmachine::Resource
 	def allowed_methods
-	    ["GET", "POST"]
+	    %w(GET)
 	end
 
 	def content_types_provided
@@ -12,5 +12,3 @@ class HelloResource < Webmachine::Resource
 		'{ "message" : "hello" }'
 	end
 end
-
-HelloResource.run
