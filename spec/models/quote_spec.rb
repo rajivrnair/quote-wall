@@ -1,18 +1,17 @@
 require_relative '../../lib/models/quote.rb'
 
 describe Quote, "Testing instance methods" do
-	before(:all) do
-		@new_quote = Quote.new({"author" => "me", "quote" => "sup yo?", "date" => "2014-05-18"}).save
-	end
 
 	it "#save - adds a quote" do
-		expect(Quote.find(1).author).to eql("me")
+		expect(Quote.find(1).author).to eql("Anon")
 	end
 
 	it "#destroy - removes a quote" do
+		@new_quote = Quote.new({"author" => "me", "quote" => "sup yo?", "date" => "2014-05-18"}).save
+
 		@new_quote.destroy
 
-		expect(Quote.find(1)).to be_nil
+		expect(Quote.find(2)).to be_nil
 	end
 end
 
@@ -24,7 +23,6 @@ describe Quote, "Testing class methods" do
 	it "#all - gets all quotes" do
 		Quote.new({"author" => "anon1", "quote" => "Persistence Pays1", "date" => "2014-05-18"}).save
 		Quote.new({"author" => "anon2", "quote" => "Persistence Pays2", "date" => "2014-05-18"}).save
-		Quote.new({"author" => "anon3", "quote" => "Persistence Pays3", "date" => "2014-05-18"}).save
 
 		expect(Quote.all.length).to eql(3)
 	end

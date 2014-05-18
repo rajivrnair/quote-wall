@@ -22,7 +22,7 @@ class Quote
 	end
 
 	def to_json(options = {})
-		%{{"id":#@id, "author":"#@author", "quote":"#@quote", "date":"#@date"}}
+		%{{"id":#@id, "author":"#@author", "quote":"#@quote"}}
 	end
 
 	def initialize(attrs = {})
