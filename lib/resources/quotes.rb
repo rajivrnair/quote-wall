@@ -21,7 +21,7 @@ class QuotesResource < JsonResource
 	# Called if post_is_create is true
 	def create_path
 		@id = Quote.next_id
-		"/orders/#@id"
+		"/quotes/#@id"
 	end
 
 	# Called if post_is_create is true
